@@ -1,6 +1,6 @@
 [package]
 name = "armature-metrics"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2024"
 rust-version = "1.94.1"
 authors = ["Joseph Quinn <quinn.josephr@proton.me>"]
@@ -12,7 +12,7 @@ keywords = ["metrics", "prometheus", "monitoring", "observability"]
 categories = ["web-programming", "development-tools::profiling"]
 
 [dependencies]
-armature-core = { version = "0" }
+armature-core = { version = "0.8" }
 tokio = { version = "1.52", features = ["rt", "rt-multi-thread", "macros", "sync", "time"] }
 async-trait = "0.1"
 prometheus = { version = "0.14", features = ["process"] }

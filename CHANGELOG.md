@@ -9,23 +9,12 @@ Earlier changes are recorded in the workspace [`CHANGELOG.md`](../CHANGELOG.md).
 
 ## [Unreleased]
 
-### Fixed
-
-- The Prometheus `path` label is taken from `path_only()`. The raw target went in, so `/login?token=…` became a label value and every unique query burned a cardinality slot.
-- `Summary::quantile` reuses a scratch buffer instead of cloning the whole observation window per call.
-
-### Fixed
-
-- The Prometheus path label is taken from `HttpRequest::path_only`, not the raw request target. `/login?token=SECRET` was published as a label value on `/metrics`, and every distinct query string burned a slot against the cardinality cap.
+## [0.4.0] - 2026-09-15
 
 ### Changed
 
-- `Summary::quantile` and `Collector::collect` reuse a scratch buffer instead of allocating a copy of the whole observation window (up to `max_size` values) on every call.
-
-### Changed — `0.2.0` → `0.2.1`
-
-- Migrated onto `armature-core` `0.8`'s `Bytes`-backed request and response types. No behavior change beyond what that migration implies; see [`armature-core/CHANGELOG.md`](../armature-core/CHANGELOG.md).
-- Test fixtures build request bodies as `Bytes`.
+- **Breaking:** requires `armature-core` 0.10 (was `0.9`); its types appear in this crate's API, so the requirement change is breaking here and the minor moves. Part of the `armature-core` 0.10 release train.
+- Dependencies bumped to their latest releases: `tokio` 1.52 → 1.53.
 
 ## [0.3.0] - 2026-08-05
 
